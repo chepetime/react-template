@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Switch } from "react-router-dom";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
-function App() {
+import Routes from "./Routes";
+import Navigation from "components/Navigation/Navigation";
+import Footer from "components/Footer/Footer";
+
+export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <HelmetProvider>
+        <BrowserRouter>
+          <Navigation />
+          <div className="Canvas">
+            <Helmet>
+              <title>King Tide</title>
+            </Helmet>
+            <Switch>
+              <Routes />
+            </Switch>
+          </div>
+          <Footer />
+        </BrowserRouter>
+      </HelmetProvider>
     </div>
   );
 }
-
-export default App;
